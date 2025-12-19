@@ -1,5 +1,5 @@
 body {
-    background: linear-gradient(135deg, #4A90E2, #005CA9);
+    background: linear-gradient(135deg, #000000, #292929);
     color: white;
     font-family: Poppins, sans-serif;
     min-height: 100vh;
@@ -23,14 +23,14 @@ body {
 .error-box h1 {
     font-size: 72px;
     margin-bottom: 10px;
-    color: #005CA9;
+    color: #000000;
 }
 
 .btn-volver {
     margin-top: 20px;
     padding: 12px 25px;
-    background: #005CA9;
-    color: white;
+    background: #F2B705;
+    color: rgb(0, 0, 0);
     border-radius: 8px;
     font-size: 16px;
     text-decoration: none;
@@ -38,5 +38,5 @@ body {
 }
 
 .btn-volver:hover {
-    background: #4A90E2;
+    background: #E0A800;
 }
