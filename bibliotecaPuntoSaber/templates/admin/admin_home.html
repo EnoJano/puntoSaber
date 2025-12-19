@@ -1,0 +1,144 @@
+{% extends "base_admin.html" %}
+{% block title %}Panel Administrador{% endblock %}
+
+{% block content %}
+
+<h2 class="titulo-pagina">Panel Administrador</h2>
+
+<hr>
+
+<section class="admin-section">
+    <div class="admin-card">
+
+        <div class="admin-card-header">
+            <h3>Usuarios</h3>
+
+            <a href="{% url 'crear_usuario' %}" class="btn-guardar btn-sm btn-inline">
+                + Crear usuario
+            </a>
+        </div>
+
+        <table class="tabla-admin">
+            <thead>
+                <tr>
+                    <th>Usuario</th>
+                    <th>Email</th>
+                    <th>Rol</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for u in usuarios %}
+                <tr>
+                    <td>{{ u.username }}</td>
+                    <td>{{ u.email }}</td>
+
+                    <!-- ROL -->
+                    <td>
+                        <span class="badge badge-rol">
+                            {{ u.rol }}
+                        </span>
+                    </td>
+
+                    <!-- ESTADO -->
+                    <td>
+                        <span
+                            class="badge {% if u.estado == 'activo' %}badge-activo{% else %}badge-inactivo{% endif %}">
+                            {{ u.estado }}
+                        </span>
+                    </td>
+
+                    <!-- ACCIONES -->
+                    <td class="acciones">
+                        <a href="{% url 'editar_usuario' u.id %}" class="btn-link">
+                            Editar
+                        </a>
+
+                        {% if u.estado == "activo" %}
+                        <a href="{% url 'desactivar_usuario' u.id %}" class="btn-link danger">
+                            Desactivar
+                        </a>
+                        {% else %}
+                        <a href="{% url 'activar_usuario' u.id %}" class="btn-link">
+                            Activar
+                        </a>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+</section>
+
+<br>
+
+<section class="admin-section">
+    <div class="admin-card">
+
+        <div class="admin-card-header">
+            <h3>Archivos</h3>
+        </div>
+
+        <table class="tabla-admin">
+            <thead>
+                <tr>
+                    <th>Título</th>
+                    <th>Docente</th>
+                    <th>Categoría</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for a in archivos %}
+                <tr>
+                    <td>{{ a.titulo }}</td>
+                    <td>{{ a.docente.username }}</td>
+                    <td>{{ a.categoria }}</td>
+
+                    <!-- ESTADO -->
+                    <td>
+                        {% if a.estado == "activo" %}
+                        <span class="badge badge-activo">Activo</span>
+                        {% elif a.estado == "eliminado_docente" %}
+                        <span class="badge badge-warning">
+                            Eliminado por docente
+                        </span>
+                        {% elif a.estado == "eliminado_admin" %}
+                        <span class="badge badge-inactivo">
+                            Eliminado por administrador
+                        </span>
+                        {% endif %}
+                    </td>
+
+                    <!-- ACCIONES -->
+                    <td class="acciones">
+                        <a href="{% url 'editar_archivo_admin' a.id %}" class="btn-link">
+                            Editar
+                        </a>
+
+                        {% if a.estado == "activo" %}
+                        <a href="{% url 'eliminar_archivo_admin' a.id %}" class="btn-link danger"
+                            onclick="return confirm('¿Dar de baja el archivo?')">
+                            Dar de baja
+                        </a>
+                        {% else %}
+                        <a href="{% url 'restaurar_archivo_admin' a.id %}" class="btn-link">
+                            Restaurar
+                        </a>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+</section>
+
+{% endblock %}

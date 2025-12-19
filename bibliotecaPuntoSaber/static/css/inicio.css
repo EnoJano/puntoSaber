@@ -1,0 +1,747 @@
+/* =====================================================================
+   VARIABLES DE COLOR – DUOC UC (CONSISTENTE CON LOGIN)
+===================================================================== */
+:root {
+    --duoc-negro: #111111;
+    --duoc-blanco: #FFFFFF;
+
+    --duoc-amarillo: #F2B705;
+    --duoc-amarillo-hover: #E0A800;
+
+    --duoc-azul: #005CA9;
+    --duoc-azul-claro: #4A90E2;
+
+    --duoc-gris-oscuro: #333333;
+    --duoc-gris-medio: #666666;
+    --duoc-gris-claro: #E5E7EB;
+
+    --duoc-verde: #28a745;
+    --duoc-rojo: #d9534f;
+}
+
+/* =====================================================================
+   RESET Y CONFIGURACIÓN BASE
+===================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #f9fafb;
+}
+
+/* =====================================================================
+   HEADER / NAVBAR (NEGRO DUOC)
+===================================================================== */
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    padding: 15px 20px;
+    background-color: var(--duoc-negro);
+    color: var(--duoc-blanco);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.header h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.header nav button {
+    margin-left: 10px;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 6px;
+    background-color: var(--duoc-amarillo);
+    color: var(--duoc-negro);
+    cursor: pointer;
+    font-weight: 700;
+    transition: 0.3s;
+}
+
+.header nav button:hover {
+    background-color: var(--duoc-amarillo-hover);
+}
+
+.saludo {
+    margin-right: 20px;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.logo-navbar {
+    height: 55px;
+    object-fit: contain;
+}
+
+/* =====================================================================
+   BOTONES NAV
+===================================================================== */
+.btn-cerrar {
+    background-color: var(--duoc-amarillo);
+    color: var(--duoc-negro);
+}
+
+.btn-cerrar:hover {
+    background-color: var(--duoc-amarillo-hover);
+}
+
+.btn-volver {
+    background-color: transparent;
+    color: var(--duoc-blanco);
+    padding: 8px 14px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    border: 1px solid var(--duoc-gris-claro);
+}
+
+.btn-volver:hover {
+    background-color: var(--duoc-gris-oscuro);
+}
+
+/* =====================================================================
+   CONTENEDOR PRINCIPAL
+===================================================================== */
+.main-container {
+    flex: 1;
+    padding: 20px;
+    max-width: 1100px;  
+    margin: 0 auto;      
+    width: 100%;
+}
+
+/* =====================================================================
+   SECCIONES GENERALES
+===================================================================== */
+.seccion {
+    background-color: var(--duoc-blanco);
+    padding: 24px;
+    border-radius: 12px;
+    border: 1px solid var(--duoc-gris-claro);
+    margin-bottom: 28px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+}
+
+/* =====================================================================
+   FOOTER (NEGRO DUOC)
+===================================================================== */
+.footer {
+    width: 100%;
+    background-color: var(--duoc-negro);
+    color: var(--duoc-blanco);
+    text-align: center;
+    padding: 15px 20px;
+}
+
+.footer-content p {
+    margin: 5px 0;
+    font-size: 14px;
+    opacity: 0.85;
+}
+
+/* =====================================================================
+   ACORDEÓN
+===================================================================== */
+.acordeon-item {
+    margin-bottom: 15px;
+    border-radius: 8px;
+    background: var(--duoc-blanco);
+    border: 1px solid var(--duoc-gris-claro);
+}
+
+.acordeon-header {
+    padding: 16px 18px;
+    cursor: pointer;
+    background: #f3f4f6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.acordeon-header:hover {
+    background: #e5e7eb;
+    transform: translateY(-1px);
+}
+
+.acordeon-title {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.acordeon-icon {
+    font-size: 20px;
+}
+
+.acordeon-contenido {
+    display: none;
+    padding: 15px 20px;
+    background: #ffffff;
+}
+
+.acordeon-item.abierto .acordeon-contenido {
+    display: block;
+}
+
+.archivo-item {
+    padding: 8px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.archivo-item:hover {
+    background: rgba(242, 183, 5, 0.18);
+    transform: translateX(4px);
+}
+
+/* =====================================================================
+   BUSCADOR Y FILTROS
+===================================================================== */
+.buscador-container {
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+#buscador {
+    width: 90%;
+    max-width: 500px;
+    padding: 12px 15px;
+    border: 1px solid var(--duoc-gris-claro);
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: #ffffff;
+    margin-bottom: 10px;
+}
+
+#buscador:focus {
+    outline: none;
+    border-color: var(--duoc-azul);
+    box-shadow: 0 0 0 3px rgba(0, 92, 169, 0.15);
+}
+
+.filtros-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    margin: 12px auto 30px auto;
+    font-size: 14px;
+    flex-wrap: wrap;
+}
+
+/* =====================================================================
+   MODAL ARCHIVOS
+===================================================================== */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.modal-contenido {
+    background: var(--duoc-blanco);
+    width: 90%;
+    max-width: 720px;
+    padding: 24px;
+    border-radius: 16px;
+    position: relative;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+    animation: modalIn 0.25s ease;
+}
+
+@keyframes modalIn {
+    from {
+        opacity: 0;
+        transform: scale(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.modal-cerrar {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+    font-size: 22px;
+}
+
+.modal-preview {
+    width: 100%;
+    height: 350px;
+    border: none;
+    margin: 15px 0;
+}
+
+
+
+/* =====================================================================
+   CALIFICACIONES
+===================================================================== */
+.estrellas span {
+    font-size: 22px;
+    cursor: pointer;
+    color: #ccc;
+}
+
+.estrellas span.activa {
+    color: var(--duoc-amarillo);
+}
+
+/* =====================================================================
+   FORMULARIOS
+===================================================================== */
+textarea {
+    width: 100%;
+    height: 80px;
+    margin: 10px 0;
+}
+
+.btn-guardar {
+    width: 100%;
+    padding: 10px;
+    background: var(--duoc-amarillo);
+    color: var(--duoc-negro);
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    border-radius: 6px;
+}
+
+.btn-guardar:hover {
+    background: var(--duoc-amarillo-hover);
+}
+
+/* =====================================================================
+   ESTADOS ESPECIALES
+===================================================================== */
+
+
+.archivo-baja {
+    display: block;
+    margin-top: 4px;
+    color: var(--duoc-rojo);
+    font-size: 0.9rem;
+    font-style: italic;
+}
+
+mark {
+    background-color: rgba(242, 183, 5, 0.35);
+    padding: 0 2px;
+    border-radius: 3px;
+}
+
+
+.acordeon-item.abierto {
+    animation: abrirAcordeon 0.25s ease;
+}
+
+@keyframes abrirAcordeon {
+    from {
+        opacity: 0.7;
+        transform: scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.filtros-container label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background-color: #ffffff;
+    border: 1px solid var(--duoc-gris-claro);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.filtros-container label:hover {
+    background-color: rgba(242,183,5,0.15);
+    border-color: var(--duoc-amarillo);
+}
+
+.filtros-container input[type="checkbox"] {
+    accent-color: var(--duoc-amarillo);
+    cursor: pointer;
+}
+.titulo-seccion {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--duoc-amarillo);
+    color: var(--duoc-negro);
+}
+.sin-resultados {
+    display: none;
+    text-align: center;
+    color: #999;
+    font-size: 15px;
+    margin-top: 40px;
+}
+.contador {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 10px;
+}
+.titulo-pagina {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.btn-sm {
+    padding: 6px 12px;
+    font-size: 14px;
+}
+.acciones .btn-link:hover {
+    text-decoration: underline;
+}
+
+.acciones .btn-link.danger:hover {
+    color: #b91c1c;
+}
+.btn-inline {
+    width: auto;
+    white-space: nowrap;
+}
+/* =====================================================================
+   MODAL – ARCHIVOS NO PDF (UI MEJORADO)
+===================================================================== */
+.modal-acciones {
+    display: flex;
+    justify-content: center;
+    margin: 15px 0 10px;
+}
+.modal-archivo-info {
+    margin: 15px 0;
+}
+
+/* CONTENEDOR NO PDF */
+.archivo-no-preview {
+    display: none;
+    background: #f9fafb;
+    border: 1px dashed var(--duoc-gris-claro);
+    border-radius: 10px;
+    padding: 25px 20px;
+    text-align: center;
+}
+
+/* ICONO */
+.archivo-icono {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+/* MENSAJE */
+.archivo-mensaje {
+    font-size: 14px;
+    color: var(--duoc-gris-medio);
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+/* BOTÓN DESCARGA */
+.btn-descargar {
+    display: inline-block;
+    background: var(--duoc-amarillo);
+    color: var(--duoc-negro);
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+}
+
+.btn-descargar:hover {
+    background: var(--duoc-amarillo-hover);
+    transform: translateY(-1px);
+}
+.modal-calificacion {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid var(--duoc-gris-claro);
+}
+/* ===============================
+   DOCENTE HOME – UI
+================================ */
+
+.contenedor-docente {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.titulo-docente {
+    font-size: 26px;
+    margin-bottom: 15px;
+}
+
+.btn-principal-docente {
+    display: inline-block;
+    margin-bottom: 25px;
+    padding: 10px 18px;
+    background: var(--duoc-amarillo);
+    color: var(--duoc-negro);
+    font-weight: 700;
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+.btn-principal-docente:hover {
+    background: var(--duoc-amarillo-hover);
+}
+
+/* GRID */
+.grid-archivos-docente {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+/* CARD */
+.card-archivo-docente {
+    background: var(--duoc-blanco);
+    border: 1px solid var(--duoc-gris-claro);
+    border-radius: 12px;
+    padding: 16px;
+    transition: all 0.2s ease;
+}
+
+.card-archivo-docente:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.card-archivo-docente h3 {
+    font-size: 18px;
+    margin-bottom: 6px;
+}
+
+.categoria-docente {
+    font-size: 14px;
+    color: var(--duoc-gris-medio);
+    margin-bottom: 10px;
+}
+
+.promedio-docente {
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+/* ACCIONES */
+.acciones-docente {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.acciones-docente a {
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--duoc-azul);
+}
+
+.acciones-docente a:last-child {
+    color: var(--duoc-rojo);
+}
+/* ===============================
+   FORMULARIO DOCENTE
+================================ */
+
+.contenedor-formulario {
+    max-width: 700px;
+    margin: 0 auto;
+    background: var(--duoc-blanco);
+    padding: 30px;
+    border-radius: 14px;
+    border: 1px solid var(--duoc-gris-claro);
+}
+
+.titulo-formulario {
+    font-size: 26px;
+    margin-bottom: 10px;
+}
+
+.texto-ayuda {
+    font-size: 14px;
+    color: var(--duoc-gris-medio);
+    margin-bottom: 25px;
+}
+
+/* CAMPOS */
+.campo-form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 18px;
+}
+
+.campo-form label {
+    font-weight: 600;
+    margin-bottom: 6px;
+    font-size: 14px;
+}
+
+.campo-form input,
+.campo-form select,
+.campo-form textarea {
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid var(--duoc-gris-claro);
+    font-size: 15px;
+}
+
+.campo-form textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.campo-form input:focus,
+.campo-form select:focus,
+.campo-form textarea:focus {
+    outline: none;
+    border-color: var(--duoc-azul);
+    box-shadow: 0 0 0 3px rgba(0,92,169,0.15);
+}
+
+/* ERRORES */
+.campo-form ul {
+    margin-top: 6px;
+    color: var(--duoc-rojo);
+    font-size: 13px;
+}
+
+.error-form {
+    background: rgba(214,69,69,0.1);
+    color: var(--duoc-rojo);
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+/* ACCIONES */
+.acciones-form {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.btn-secundario {
+    padding: 10px 16px;
+    border-radius: 8px;
+    border: 1px solid var(--duoc-gris-claro);
+    text-decoration: none;
+    color: var(--duoc-gris-oscuro);
+    font-weight: 600;
+}
+
+.btn-secundario:hover {
+    background: var(--duoc-gris-claro);
+}
+
+.admin-section {
+    margin-bottom: 30px;
+}
+.admin-card {
+    background: var(--duoc-blanco);
+    border: 1px solid var(--duoc-gris-claro);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.tabla-admin {
+    width: 100%;
+    max-width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.tabla-admin tbody tr {
+    border-bottom: 1px solid var(--duoc-gris-claro);
+}
+.tabla-admin tbody tr:hover {
+    background-color: rgba(242, 183, 5, 0.08);
+}
+
+.tabla-admin td {
+    padding: 14px 12px;
+    vertical-align: middle;
+}
+.tabla-admin tbody tr:not(:last-child) {
+    margin-bottom: 8px;
+}
+
+.admin-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    gap: 15px;
+}
+
+/* Acciones */
+.acciones .btn-link {
+    margin-right: 10px;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--duoc-azul);
+}
+
+.acciones .btn-link.danger {
+    color: var(--duoc-rojo);
+}
+/* Badges */
+.badge {
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.badge-activo {
+    background: rgba(40,167,69,0.15);
+    color: var(--duoc-verde);
+}
+
+.badge-inactivo {
+    background: rgba(217,83,79,0.15);
+    color: var(--duoc-rojo);
+}
+
+.badge-warning {
+    background: rgba(242,183,5,0.25);
+    color: #856404;
+}
+
+.badge-rol {
+    background: rgba(0,92,169,0.15);
+    color: var(--duoc-azul);
+}

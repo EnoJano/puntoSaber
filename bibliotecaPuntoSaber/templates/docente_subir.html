@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %}Subir Archivo{% endblock %}
+
+{% block content %}
+
+<div class="contenedor-formulario">
+
+    <h2 class="titulo-formulario">Subir nuevo archivo</h2>
+
+    <p class="texto-ayuda">
+        Completa la información y selecciona el archivo que deseas subir.
+    </p>
+
+    <form method="POST" enctype="multipart/form-data" class="form-archivo">
+        {% csrf_token %}
+
+        {% if form.non_field_errors %}
+            <div class="error-form">
+                {{ form.non_field_errors }}
+            </div>
+        {% endif %}
+
+        <div class="campo-form">
+            {{ form.titulo.label_tag }}
+            {{ form.titulo }}
+            {{ form.titulo.errors }}
+        </div>
+
+        <div class="campo-form">
+            {{ form.descripcion.label_tag }}
+            {{ form.descripcion }}
+            {{ form.descripcion.errors }}
+        </div>
+
+        <div class="campo-form">
+            {{ form.categoria.label_tag }}
+            {{ form.categoria }}
+            {{ form.categoria.errors }}
+        </div>
+
+        <div class="campo-form">
+            {{ form.archivo.label_tag }}
+            {{ form.archivo }}
+            {{ form.archivo.errors }}
+        </div>
+
+        <div class="acciones-form">
+            <button class="btn-guardar" type="submit">
+                Subir archivo
+            </button>
+
+            <a href="{% url 'docente_home' %}" class="btn-secundario">
+                Cancelar
+            </a>
+        </div>
+
+    </form>
+
+</div>
+
+{% endblock %}

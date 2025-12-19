@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}Panel Docente{% endblock %}
+
+{% block content %}
+
+<div class="contenedor-docente">
+
+    <h2 class="titulo-docente">Mis Archivos</h2>
+
+    <a href="{% url 'subir_archivo' %}" class="btn-principal-docente">
+        + Subir nuevo archivo
+    </a>
+
+    <div class="grid-archivos-docente">
+
+        {% for archivo in archivos %}
+        <div class="card-archivo-docente">
+
+            <h3>{{ archivo.titulo }}</h3>
+
+            <p class="categoria-docente">
+                📂 {{ archivo.categoria }}
+            </p>
+
+            {% if archivo.estado == "eliminado" %}
+                <p class="archivo-eliminado">
+                    ⚠ Archivo dado de baja
+                </p>
+            {% else %}
+                <div class="acciones-docente">
+                    <a href="{% url 'editar_archivo' archivo.id %}">Editar</a>
+                    <a href="{% url 'eliminar_archivo' archivo.id %}"
+                       onclick="return confirm('¿Eliminar archivo?')">
+                        Eliminar
+                    </a>
+                </div>
+            {% endif %}
+
+            <p class="promedio-docente">
+                ⭐ Promedio: {{ archivo.calificaciones.aggregate.avg|default:0 }}
+            </p>
+
+        </div>
+        {% empty %}
+        <p class="sin-archivos">
+            No has subido archivos aún.
+        </p>
+        {% endfor %}
+
+    </div>
+</div>
+
+{% endblock %}

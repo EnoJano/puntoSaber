@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ========================= -->
+    <!-- TÍTULO DE LA PÁGINA -->
+    <!-- ========================= -->
+    <title>Punto Saber | Iniciar Sesión</title>
+
+    <!-- ========================= -->
+    <!-- ESTILOS -->
+    <!-- ========================= -->
+    <link rel="icon" type="image/png" href="{% static 'img/puntoSaberIcono.png' %}">
+    <link rel="stylesheet" href="{% static 'css/inicioSesion.css' %}">
+</head>
+
+<body>
+
+    <!-- ========================= -->
+    <!-- CONTENEDOR PRINCIPAL -->
+    <!-- ========================= -->
+    <div class="page-container">
+
+        <!-- ========================= -->
+        <!-- SECCIÓN LOGIN -->
+        <!-- ========================= -->
+        <main class="main-login">
+            <div class="login-container">
+
+                <!-- ========================= -->
+                <!-- ZONA DE MARCA / LOGO -->
+                <!-- ========================= -->
+                <div class="login-brand">
+                    <img src="{% static 'img/puntoSaberVertical.png' %}" alt="Punto Saber">
+                </div>
+
+                <!-- ========================= -->
+                <!-- FORMULARIO -->
+                <!-- ========================= -->
+                <div class="login-form">
+                    <form method="POST" novalidate>
+                        {% csrf_token %}
+
+                        <!-- CAMPO CORREO -->
+                        <div class="input-group">
+                            <label for="correo">Correo</label>
+                            <input type="email" id="correo" name="correo" placeholder="Ingresa tu correo" required>
+                        </div>
+
+                        <!-- CAMPO CONTRASEÑA -->
+                        <div class="input-group">
+                            <label for="password">Contraseña</label>
+                            <input type="password" id="password" name="password" placeholder="Ingresa tu contraseña"
+                                required>
+                        </div>
+
+                        <!-- BOTÓN -->
+                        <button class="btn-login" type="submit">
+                            Ingresar
+                        </button>
+
+                        <!-- MENSAJES DEL BACKEND -->
+                        {% if mensaje %}
+                        <div id="msg" class="{{ tipo_mensaje }}">
+                            {{ mensaje }}
+                        </div>
+                        {% endif %}
+                    </form>
+                </div>
+
+            </div>
+        </main>
+
+        <!-- ========================= -->
+        <!-- FOOTER -->
+        <!-- ========================= -->
+        <footer class="footer">
+            <div class="footer-content">
+                <p>&copy; 2025 Punto Saber. Todos los derechos reservados.</p>
+            </div>
+        </footer>
+
+    </div>
+
+</body>
+
+</html>

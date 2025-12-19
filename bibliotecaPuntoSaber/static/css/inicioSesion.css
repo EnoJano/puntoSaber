@@ -1,0 +1,215 @@
+/* =====================================================================
+   VARIABLES DE COLOR – DUOC UC OFICIAL
+===================================================================== */
+:root {
+    --duoc-negro: #111111;
+    --duoc-blanco: #FFFFFF;
+
+    --duoc-amarillo: #F2B705;
+    --duoc-amarillo-hover: #E0A800;
+
+    --duoc-azul: #005CA9;
+    --duoc-azul-claro: #4A90E2;
+
+    --duoc-gris-oscuro: #2E2E2E;
+    --duoc-gris-medio: #6B7280;
+
+    --duoc-verde: #2EAD5F;
+    --duoc-rojo: #D64545;
+}
+
+/* =====================================================================
+   RESET Y BASE
+===================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+html, body {
+    min-height: 100vh;
+    background-color: var(--duoc-blanco);
+}
+
+/* =====================================================================
+   CONTENEDOR PRINCIPAL
+===================================================================== */
+.page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* =====================================================================
+   MAIN LOGIN
+===================================================================== */
+.main-login {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    background-color: var(--duoc-blanco);
+}
+
+/* =====================================================================
+   CAJA LOGIN (CONTENEDOR GENERAL)
+===================================================================== */
+.login-container {
+    width: 380px;
+    background: var(--duoc-blanco);
+    border-radius: 16px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 14px 35px rgba(0,0,0,0.15);
+    overflow: hidden; /* CLAVE para separar marca y formulario */
+    animation: fadeIn 0.4s ease;
+}
+
+/* =====================================================================
+   ZONA DE MARCA (LOGO)
+===================================================================== */
+.login-brand {
+    background-color: var(--duoc-negro);
+    padding: 32px 20px 28px;
+    text-align: center;
+}
+
+.login-brand img {
+    max-width: 190px;
+}
+
+/* Línea amarilla institucional */
+.login-brand::after {
+    content: "";
+    display: block;
+    width: 64px;
+    height: 4px;
+    background-color: var(--duoc-amarillo);
+    margin: 18px auto 0;
+    border-radius: 4px;
+}
+
+/* =====================================================================
+   FORMULARIO
+===================================================================== */
+.login-form {
+    padding: 32px 30px;
+}
+
+.login-form h2 {
+    text-align: center;
+    margin-bottom: 26px;
+    color: var(--duoc-negro);
+    font-weight: 600;
+}
+
+/* =====================================================================
+   CAMPOS
+===================================================================== */
+.input-group {
+    margin-bottom: 18px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--duoc-gris-oscuro);
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: all 0.2s ease;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: var(--duoc-azul);
+    box-shadow: 0 0 0 3px rgba(0, 92, 169, 0.15);
+}
+
+/* =====================================================================
+   BOTÓN LOGIN – AMARILLO DUOC
+===================================================================== */
+.btn-login {
+    width: 100%;
+    padding: 13px;
+    background-color: var(--duoc-amarillo);
+    color: var(--duoc-negro);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 700;
+    margin-top: 12px;
+    transition: background 0.25s, transform 0.15s, box-shadow 0.15s;
+}
+
+.btn-login:hover {
+    background-color: var(--duoc-amarillo-hover);
+    box-shadow: 0 6px 14px rgba(242, 183, 5, 0.35);
+}
+
+.btn-login:active {
+    transform: translateY(1px);
+}
+
+/* =====================================================================
+   MENSAJES
+===================================================================== */
+#msg {
+    margin-top: 16px;
+    padding: 10px;
+    text-align: center;
+    font-weight: 600;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+#msg.error {
+    color: var(--duoc-rojo);
+    background: rgba(214, 69, 69, 0.12);
+}
+
+#msg.success {
+    color: var(--duoc-verde);
+    background: rgba(46, 173, 95, 0.12);
+}
+
+/* =====================================================================
+   FOOTER – NEGRO DUOC
+===================================================================== */
+.footer {
+    width: 100%;
+    background-color: var(--duoc-negro);
+    color: var(--duoc-blanco);
+    text-align: center;
+    padding: 14px 20px;
+}
+
+.footer-content p {
+    margin: 0;
+    font-size: 13px;
+    opacity: 0.9;
+}
+
+/* =====================================================================
+   ANIMACIÓN
+===================================================================== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

@@ -1,0 +1,83 @@
+{% extends "base_admin.html" %}
+
+{% block content %}
+
+<div class="contenedor-formulario">
+
+    <h2 class="titulo-formulario">Editar archivo</h2>
+
+    <p class="texto-ayuda">
+        Desde aquí puedes modificar la información del archivo, cambiar su estado
+        o reemplazar el archivo original.
+    </p>
+
+    <form method="POST" enctype="multipart/form-data" class="form-admin">
+        {% csrf_token %}
+
+        <!-- TÍTULO -->
+        <div class="campo-form">
+            <label>Título</label>
+            <input type="text" name="titulo" value="{{ archivo.titulo }}" required>
+        </div>
+
+        <!-- DESCRIPCIÓN -->
+        <div class="campo-form">
+            <label>Descripción</label>
+            <textarea name="descripcion">{{ archivo.descripcion }}</textarea>
+        </div>
+
+        <!-- AUTOR -->
+        <div class="campo-form">
+            <label>Autor</label>
+            <input type="text" value="{{ archivo.autor }}" disabled>
+        </div>
+
+        <!-- CATEGORÍA -->
+        <div class="campo-form">
+            <label>Categoría</label>
+            <input type="text" value="{{ archivo.categoria }}" disabled>
+        </div>
+
+        <!-- ESTADO -->
+        <div class="campo-form">
+            <label>Estado del archivo</label>
+            <select name="estado">
+                <option value="activo" {% if archivo.estado == "activo" %}selected{% endif %}>
+                    Activo
+                </option>
+                <option value="eliminado_admin" {% if archivo.estado == "eliminado_admin" %}selected{% endif %}>
+                    Eliminado por administrador
+                </option>
+            </select>
+
+            <small class="texto-ayuda">
+                Si el archivo está eliminado, no será visible para los alumnos.
+            </small>
+        </div>
+
+        <!-- REEMPLAZAR ARCHIVO -->
+        <div class="campo-form">
+            <label>Reemplazar archivo (opcional)</label>
+            <input type="file" name="archivo">
+
+            <small class="texto-ayuda">
+                Solo selecciona un archivo si deseas reemplazar el actual.
+            </small>
+        </div>
+
+        <!-- ACCIONES -->
+        <div class="acciones-form">
+            <button type="submit" class="btn-guardar">
+                Guardar cambios
+            </button>
+
+            <a href="{% url 'admin_home' %}" class="btn-secundario">
+                Cancelar
+            </a>
+        </div>
+
+    </form>
+
+</div>
+
+{% endblock %}

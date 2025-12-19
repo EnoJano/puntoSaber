@@ -1,0 +1,82 @@
+{% extends "base_admin.html" %}
+{% block title %}Crear Usuario{% endblock %}
+
+{% block content %}
+
+<h2>Crear nuevo usuario</h2>
+
+<p class="texto-ayuda">
+    Desde aquí puedes crear usuarios con rol de alumno o docente.
+    Los administradores solo pueden crearse desde el panel de Django.
+</p>
+
+<!-- MENSAJES -->
+{% if messages %}
+    {% for message in messages %}
+        <div class="mensaje {{ message.tags }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+
+<form method="POST" class="form-admin">
+    {% csrf_token %}
+
+    <!-- USERNAME -->
+    <div class="campo-form">
+        <label for="username">Usuario</label>
+        <input type="text" name="username" id="username" required>
+    </div>
+
+    <!-- NOMBRE -->
+    <div class="campo-form">
+        <label for="first_name">Nombre</label>
+        <input type="text" name="first_name" id="first_name">
+    </div>
+
+    <!-- APELLIDO -->
+    <div class="campo-form">
+        <label for="last_name">Apellido</label>
+        <input type="text" name="last_name" id="last_name">
+    </div>
+
+    <!-- EMAIL -->
+    <div class="campo-form">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" required>
+    </div>
+
+    <!-- ROL -->
+    <div class="campo-form">
+        <label for="rol">Rol</label>
+        <select name="rol" id="rol" required>
+            <option value="">-- Selecciona un rol --</option>
+            <option value="alumno">Alumno</option>
+            <option value="docente">Docente</option>
+        </select>
+
+        <small class="texto-ayuda">
+            No es posible crear usuarios administradores desde aquí.
+        </small>
+    </div>
+
+    <!-- CONTRASEÑA -->
+    <div class="campo-form">
+        <label for="password">Contraseña</label>
+        <input type="password" name="password" id="password" required>
+    </div>
+
+    <!-- ACCIONES -->
+    <div class="acciones-form">
+        <button type="submit" class="btn-guardar">
+            Crear usuario
+        </button>
+
+        <a href="{% url 'admin_home' %}" class="btn-secundario">
+            Cancelar
+        </a>
+    </div>
+
+</form>
+
+{% endblock %}

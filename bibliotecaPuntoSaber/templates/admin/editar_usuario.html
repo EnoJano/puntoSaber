@@ -1,0 +1,81 @@
+{% extends "base_admin.html" %}
+
+{% block content %}
+
+<div class="contenedor-formulario">
+
+    <h2 class="titulo-formulario">Editar Usuario</h2>
+
+    <p class="texto-ayuda">
+        Desde aquí puedes modificar los datos del usuario, su rol y su estado.
+    </p>
+
+    <form method="POST" class="form-admin">
+        {% csrf_token %}
+
+        <div class="campo-form">
+            <label>Usuario</label>
+            <input type="text" value="{{ usuario.username }}" disabled>
+        </div>
+
+        <div class="campo-form">
+            <label>Nombre</label>
+            <input type="text" name="first_name" value="{{ usuario.first_name }}">
+        </div>
+
+        <div class="campo-form">
+            <label>Apellido</label>
+            <input type="text" name="last_name" value="{{ usuario.last_name }}">
+        </div>
+
+        <div class="campo-form">
+            <label>Email</label>
+            <input type="email" name="email" value="{{ usuario.email }}" required>
+        </div>
+
+        <div class="campo-form">
+            <label>Rol</label>
+            <select name="rol" required>
+                <option value="alumno" {% if usuario.rol == "alumno" %}selected{% endif %}>
+                    Alumno
+                </option>
+                <option value="docente" {% if usuario.rol == "docente" %}selected{% endif %}>
+                    Docente
+                </option>
+            </select>
+
+            <small class="texto-ayuda">
+                No está permitido asignar rol administrador.
+            </small>
+        </div>
+
+        <div class="campo-form">
+            <label>Estado</label>
+            <select name="estado">
+                <option value="activo" {% if usuario.estado == "activo" %}selected{% endif %}>
+                    Activo
+                </option>
+                <option value="desactivado" {% if usuario.estado == "desactivado" %}selected{% endif %}>
+                    Desactivado
+                </option>
+            </select>
+
+            <small class="texto-ayuda">
+                Los usuarios desactivados no podrán iniciar sesión.
+            </small>
+        </div>
+
+        <div class="acciones-form">
+            <button type="submit" class="btn-guardar">
+                Guardar cambios
+            </button>
+
+            <a href="{% url 'admin_home' %}" class="btn-secundario">
+                Cancelar
+            </a>
+        </div>
+    </form>
+
+</div>
+
+{% endblock %}

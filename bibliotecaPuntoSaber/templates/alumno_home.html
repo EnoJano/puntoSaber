@@ -1,0 +1,189 @@
+{% extends "base.html" %}
+{% block title %}Inicio Alumno{% endblock %}
+
+{% block content %}
+
+<!-- ========================= -->
+<!-- BARRA DE BÚSQUEDA -->
+<!-- ========================= -->
+<div class="barra-busqueda">
+
+
+    <div class="buscador-container">
+        <input type="text" id="buscador" placeholder="Buscar documentos, autores, docentes, categorías...">
+        <div class="filtros-container">
+            <label><input type="checkbox" class="filtro" value="autores" checked> Autores</label>
+            <label><input type="checkbox" class="filtro" value="docentes" checked> Archivos</label>
+            <label><input type="checkbox" class="filtro" value="categorias" checked> Categorías</label>
+            <label><input type="checkbox" class="filtro" value="libros" checked> Libros</label>
+        </div>
+    </div>
+</div>
+
+<div id="contador-resultados" class="contador"></div>
+<div id="sin-resultados" class="sin-resultados">
+    No se encontraron resultados
+</div>
+
+<!-- ========================= -->
+<!-- AUTORES -->
+<!-- ========================= -->
+<section id="autores" class="seccion">
+    <h2 class="titulo-seccion">Autores</h2>
+
+    {% for autor, archivos in archivos_por_autor.items %}
+    <div class="acordeon-item">
+        <div class="acordeon-header">
+            <span class="acordeon-title">{{ autor }}</span>
+            <span class="acordeon-icon">▶</span>
+        </div>
+
+        <div class="acordeon-contenido">
+            <ul>
+                {% for archivo in archivos %}
+                <li class="archivo-item" data-id="{{ archivo.id }}" data-url="{{ archivo.archivo.url }}">
+                    {{ archivo.titulo }}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    {% endfor %}
+</section>
+
+<!-- ========================= -->
+<!-- ARCHIVOS POR DOCENTE -->
+<!-- ========================= -->
+<section id="docentes" class="seccion">
+    <h2 class="titulo-seccion">Archivos de Docentes</h2>
+
+    {% for docente, archivos in archivos_por_docente.items %}
+    <div class="acordeon-item">
+        <div class="acordeon-header">
+            <span class="acordeon-title">{{ docente }}</span>
+            <span class="acordeon-icon">▶</span>
+        </div>
+
+        <div class="acordeon-contenido">
+            <ul>
+                {% for archivo in archivos %}
+                <li class="archivo-item" data-id="{{ archivo.id }}" data-url="{{ archivo.archivo.url }}">
+                    {{ archivo.titulo }}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    {% endfor %}
+</section>
+
+<!-- ========================= -->
+<!-- CATEGORÍAS -->
+<!-- ========================= -->
+<section id="categorias" class="seccion">
+    <h2 class="titulo-seccion">Categorías</h2>
+
+    {% for categoria in categorias %}
+    <div class="acordeon-item">
+        <div class="acordeon-header">
+            <span class="acordeon-title">{{ categoria }}</span>
+            <span class="acordeon-icon">▶</span>
+        </div>
+
+        <div class="acordeon-contenido">
+            <ul>
+                {% for archivo in todos_los_archivos %}
+                {% if archivo.categoria == categoria %}
+                <li class="archivo-item" data-id="{{ archivo.id }}" data-url="{{ archivo.archivo.url }}">
+                    {{ archivo.titulo }}
+                </li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    {% endfor %}
+</section>
+
+<!-- ========================= -->
+<!-- LIBROS -->
+<!-- ========================= -->
+<section id="libros" class="seccion">
+    <h2 class="titulo-seccion">Libros</h2>
+
+    <div class="acordeon-item">
+        <div class="acordeon-header">
+            <span class="acordeon-title">Todos los libros</span>
+            <span class="acordeon-icon">▶</span>
+        </div>
+
+        <div class="acordeon-contenido">
+            <ul>
+                {% for archivo in todos_los_archivos %}
+                <li class="archivo-item" data-id="{{ archivo.id }}" data-url="{{ archivo.archivo.url }}">
+                    {{ archivo.titulo }}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- ========================= -->
+<!-- MODAL ARCHIVO -->
+<!-- ========================= -->
+<div id="modalArchivo" class="modal">
+    <div class="modal-contenido">
+        <span class="modal-cerrar">&times;</span>
+
+        <h3 id="modalTitulo"></h3>
+
+        <!-- CONTENEDOR PREVIEW / INFO -->
+        <div class="modal-archivo-info">
+
+            <!-- PREVIEW PDF -->
+            <iframe id="modalPreview" class="modal-preview"></iframe>
+
+            <!-- INFO NO PDF -->
+            <div id="sinPreview" class="archivo-no-preview">
+                <div class="archivo-icono">📄</div>
+                <p class="archivo-mensaje">
+                    Este archivo no tiene vista previa.<br>
+                    Descárgalo para poder revisarlo.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="modal-acciones">
+            <a id="modalDescargar" class="btn-descargar" download>
+                Descargar archivo
+            </a>
+        </div>
+
+
+        <div class="modal-promedio">
+            ⭐ <span id="promedioEstrellas">0</span>
+            (<span id="totalCalificaciones">0</span> opiniones)
+        </div>
+
+        <div id="listaComentarios" class="modal-comentarios"></div>
+
+        <div class="modal-calificacion">
+            <p>Calificar:</p>
+            <div class="estrellas">
+                {% for i in "12345" %}
+                <span data-valor="{{ i }}">★</span>
+                {% endfor %}
+            </div>
+        </div>
+
+        <textarea id="modalComentario" placeholder="Deja un comentario..."></textarea>
+
+        <button id="guardarCalificacion" class="btn-guardar">
+            Guardar
+        </button>
+    </div>
+</div>
+
+{% endblock %}

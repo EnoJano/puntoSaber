@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Administrador | Punto Saber{% endblock %}
+
+{% block extra_css %}
+<!-- Si el admin necesita estilos propios, van aquí -->
+{% endblock %}
+
+{% block content %}
+
+<!-- ========================= -->
+<!-- HEADER ADMIN -->
+<!-- ========================= -->
+<header class="header">
+    <div class="logo">
+        <img src="{% static 'img/puntoSaberHorizontal.png' %}" alt="Punto Saber" class="logo-navbar">
+        <span class="rol">Administrador</span>
+    </div>
+
+    <nav class="nav-admin">
+        <a href="{% url 'admin_home' %}" class="btn-nav">
+            Panel
+        </a>
+
+        <form action="{% url 'logout' %}" method="POST" style="display:inline;">
+            {% csrf_token %}
+            <button class="btn-cerrar">
+                Cerrar sesión
+            </button>
+        </form>
+    </nav>
+</header>
+
+<!-- ========================= -->
+<!-- CONTENIDO ADMIN -->
+<!-- ========================= -->
+<main class="main-container">
+    {% block admin_content %}
+    {% endblock %}
+</main>
+
+{% endblock %}
