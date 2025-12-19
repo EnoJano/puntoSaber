@@ -1,2 +1,2 @@
 # puntoSaber
-secretaria@cdn1y2.cl
+Sistema web de biblioteca académica desarrollado con Django
