@@ -58,10 +58,28 @@ Tecnologías utilizadas
     Git
     GitHub
 
+Estructura del Proyecto
+puntoSaber/
+│
+├── bibliotecaPuntoSaber/
+│   ├── models.py
+│   ├── views.py
+│   ├── urls.py
+│   └── templates/
+│
+├── staticfiles/
+│   ├── css/
+│   └── js/
+│
+├── manage.py
+├── README.md
+└── .gitignore
+
+
 Estado actual del proyecto
   - Proyecto Finalizado
 
 Autor
-  - Alejandro F. Escobedo Miño
-  - Ingeniero en Informática & Comunicador Audiovisual
-  - Chile
+  Alejandro F. Escobedo Miño
+  Ingeniero en Informática & Comunicador Audiovisual
+  Chile
